@@ -20,6 +20,8 @@ class DevPannel:
         os = OS()
         file_list_data = os.filesystem_manager.get_status()
         self.file_lists.delete(0, tk.END)
+        file_list_data.append("文件 content1.txt 未被读取")
+        file_list_data.append("文件 content2.txt 未被读取")
         for item in file_list_data:
             self.file_lists.insert(tk.END, item)
 

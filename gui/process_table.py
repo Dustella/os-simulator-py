@@ -59,8 +59,8 @@ class ProcessTable:
         self.banker_view.column("需要的内存", width=80)
         self.banker_view.column("需要的设备", width=80)
         self.banker_view.heading("PID", text="PID")
-        self.banker_view.heading("需要的内存", text="需要的内存")
-        self.banker_view.heading("需要的设备", text="PID")
+        self.banker_view.heading("需要的内存", text="Memory Need")
+        self.banker_view.heading("需要的设备", text="Device Need")
 
     def update_rows(self):
         # Update the tables
