@@ -40,7 +40,7 @@ class OS:
             new_pid = randint(0, 100)
             while new_pid in pid_set:
                 new_pid = randint(0, 100)
-            process_item = Process(new_pid)
+            process_item = Process(process["PID"])
             instructions: List[Command] = []
             for command in process["commands"]:
                 command_line = Command(command)
