@@ -8,7 +8,6 @@ from process.schedular import Scheduler
 from sync.channel import ChannelManager
 from context import proceses
 from process.command import Command
-from utils.fcfs import FCFSAlgorithm
 
 
 class OS:
@@ -53,5 +52,4 @@ class OS:
             self.schedular.add_to_ready_list(process=process_item)
 
     def run(self):
-        self.schedular.set_scheduling_algorithm(FCFSAlgorithm)
         self.schedular.schedule()

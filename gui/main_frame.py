@@ -47,6 +47,7 @@ class MainFrame:
 
         self.memory_table = MemoryTable(self.window, num_pages=24)
 
+        self.bank_view = process_table.get_banker_view()
         # Add titles
 
     def init_titles(self):
@@ -60,7 +61,9 @@ class MainFrame:
         self.filelist_title = tk.Label(
             self.window, text="文件列表", font=("微软雅黑", 13))
         self.channel_title = tk.Label(
-            self.window, text="通道", font=("微软雅黑", 13))
+            self.window, text="管道（进程同步）", font=("微软雅黑", 13))
+        self.banker_title = tk.Label(
+            self.window, text="银行家算法", font=("微软雅黑", 13))
         pass
 
     def init_layout(self):
@@ -80,12 +83,15 @@ class MainFrame:
             row=2, column=1, padx=5, pady=5, rowspan=2, sticky="nsew")
         self.ended_processes.grid(
             row=2, column=2, padx=5, pady=5, rowspan=2, sticky="nsew")
+
         # row 4
         self.channel_title.grid(
             row=4, column=0, padx=5, pady=5, sticky="nsew")
         self.filelist_title.grid(
             row=4, column=1, padx=5, pady=5, sticky="nsew")
         self.thread_title.grid(row=4, column=2, padx=5, pady=5, sticky="nsew")
+        self.banker_title.grid(row=4, column=3, padx=5, pady=5, sticky="nsew")
+
         # row 5-6
         self.channel_list.grid(row=5, column=0, padx=5,
                                pady=5, rowspan=2,  sticky="nsew")
@@ -93,18 +99,19 @@ class MainFrame:
                              pady=5, rowspan=2, sticky="nsew")
         self.thread_list.grid(row=5, column=2, padx=5,
                               pady=5, rowspan=2, sticky="nsew")
+        self.bank_view.grid(row=5, column=3, padx=5, pady=5, sticky="nsew")
         #    row 7
         self.memory_table.get_widgets().grid(
             row=7, column=0, padx=5, pady=5, columnspan=3, sticky="nsew")
 # row 8
-        self.logging.grid(row=8, column=0, columnspan=3, sticky="nsew")
+        # self.logging.grid(row=8, column=0, columnspan=3, sticky="nsew")
         pass
 
     def update_data(self):
         self.device_pannel.update_rows()
         self.process_table.update_rows()
         self.memory_table.update_data()
-        self.window.after(100, self.update_data)
+        self.window.after(200, self.update_data)
 
     def run(self):
         # Run the main loop

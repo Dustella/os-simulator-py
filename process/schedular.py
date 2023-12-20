@@ -13,6 +13,7 @@ class Scheduler:
         self.current_process = None
         self.scheduling_algorithm = None
         self.died_processes: List[Process] = []
+        self.pre_ready_process: List[Process] = []
 
     def set_scheduling_algorithm(self, algorithm):
         self.scheduling_algorithm = algorithm

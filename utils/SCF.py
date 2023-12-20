@@ -1,8 +1,7 @@
-
 from process import schedular
 
 
-class FCFSAlgorithm:
+class SCF:
     def schedule(scheduler: schedular.Scheduler):
         next_process = scheduler.get_next_process()
 
